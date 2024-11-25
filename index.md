@@ -4,7 +4,7 @@ I am a computer science major at CSUF, and I am taking CPSC 120, which is an 'In
 
 ## Favorite CPSC 120L Labs 
 
-Lab 6, Part-1
+### Lab 6, Part-1
 The key point of Part-1 was reading command-line input and printing the output. The user needed to provide three command-line arguments, excluding the command name. This if statement helped to check the number of the arguments and was also useful for the following lab exercises: 
 ```c++
   if (command_line.size() != 4) {
@@ -20,7 +20,7 @@ The part where I initialized each argument received from the command line as a s
   std::string condiment{command_line[3]};
 ```
 
-Lab 7, part-1
+### Lab 7, part-1
 Lab 7 was a remarkable lab. By examining the parking rules for four streets, I created function for a each street. I putted each function in the ‘parking_functions.cc’ and named them ‘CanParkOnAsh’, ‘CanParkOnBeech’,  ‘CanParkOnCedar’, and ‘CanParkOnDate’. 
 The ‘CanParkOnDate’ function was most interesting. Because it required specific time, including minutes. This is the function of ‘CanParkOnDate’: 
 ```c++
