@@ -33,3 +33,27 @@ bool CanParkOnDate(const std::string& day, int hour, int min) {
 }
 ```
 At first, it was confusing because it required to check each condition by referring to the parking rule signs. This process was really helpful for practicing logical operators &&(and) and ||(or). 
+
+### Lab 10, part-2
+part-2 clearly demonstrates how to use classes. Especially in hilo_function.h, the GameState class defines both public and private member variables, which are key to this lab. For example, part of the GameState class looks like this:
+```c++
+class GameState {
+ public:
+  bool GuessCorrect(int guess) const;
+
+ private:
+  int secret_;
+};
+```
+
+The bool GuessCorrect(int guess) const method is used in hilo_function.cc to check if the guessed number matches the secret number:
+```c++
+bool GameState::GuessCorrect(int guess) const {
+  if (guess == secret_) {
+    return true;
+  }
+  return false;
+}
+```
+The way the struct in hilo_function.h defines both methods and variables really shows how the functions in hilo_function.cc are seamlessly connected to the headers in hilo_function.h. It was fascinating to see how everything works together.
+
