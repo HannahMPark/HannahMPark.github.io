@@ -35,7 +35,7 @@ bool CanParkOnDate(const std::string& day, int hour, int min) {
 At first, it was confusing because it required to check each condition by referring to the parking rule signs. This process was really helpful for practicing logical operators &&(and) and ||(or). 
 
 ### Lab 10, part-2
-part-2 clearly demonstrates how to use classes. Especially in hilo_function.h, the GameState class defines both public and private member variables, which are key to this lab. For example, part of the GameState class looks like this:
+Part-2 clearly demonstrates how to use classes. Especially in hilo_function.h, the GameState class defines both public and private member variables, which are key to this lab. For example, part of the GameState class looks like this:
 ```c++
 class GameState {
  public:
