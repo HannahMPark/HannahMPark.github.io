@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Kim — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFFFF;
+    --ink: #14161A;
+    --muted: #6E7178;
+    --rule: #E7E7E9;
+    --accent: #4F46E5;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{ font-family:'Manrope', sans-serif; margin:0; letter-spacing:-0.015em; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color: inherit; text-decoration: none; }
+  a.link{ color: var(--accent); border-bottom: 1px solid transparent; }
+  a.link:hover{ border-bottom-color: var(--accent); }
+
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+  /* NAV */
+  nav{ border-bottom: 1px solid var(--rule); }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 76px;
+  }
+  .nav-logo{ font-family:'Manrope',sans-serif; font-weight:700; font-size:16px; }
+  .nav-links{ display:flex; gap:28px; font-size:14px; color: var(--muted); }
+  .nav-links a:hover{ color: var(--ink); }
+
+  /* HERO */
+  header.hero{ padding: 88px 0 72px; }
+  .kicker{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color: var(--accent);
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .hero-title{
+    font-size: clamp(40px, 7vw, 64px);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 20px;
+  }
+
+  .hero-keywords{
+    display:flex; flex-wrap: wrap; gap: 10px 18px;
+    margin-bottom: 28px;
+  }
+  .hero-keywords span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 13.5px;
+    color: var(--muted);
+    position: relative;
+    padding-left: 14px;
+  }
+  .hero-keywords span::before{
+    content:"";
+    position:absolute; left:0; top:50%; transform: translateY(-50%);
+    width:6px; height:6px; border-radius:50%;
+    background: var(--accent);
+  }
+
+  .hero-desc{
+    font-size: 18px; color: var(--muted); max-width: 540px; margin-bottom: 32px;
+  }
+  .hero-links{ display:flex; gap: 24px; font-family:'IBM Plex Mono', monospace; font-size: 13.5px; }
+
+  /* ROW LAYOUT (no cards, asymmetric label + content) */
+  section{ padding: 64px 0; border-top: 1px solid var(--rule); }
+  .section-head{
+    display:flex; align-items:baseline; justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .section-head h2{ font-size: 26px; }
+  .section-head .count{ font-family:'IBM Plex Mono', monospace; font-size:13px; color: var(--muted); }
+
+  .row{
+    display:grid;
+    grid-template-columns: 96px 1fr;
+    gap: 24px;
+    padding: 26px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .row:first-of-type{ border-top: none; }
+  .row-label{ font-family:'IBM Plex Mono', monospace; font-size:13px; color: var(--muted); padding-top: 3px; }
+  .row-body h3{ font-size: 19px; margin-bottom: 8px; }
+  .row-body p{ color: var(--muted); font-size: 15px; margin: 0 0 12px; max-width: 560px; }
+  .row-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 10px; }
+  .row-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color: var(--muted);
+  }
+  .row-tags span:not(:last-child)::after{ content:"·"; margin-left:8px; color: var(--rule); }
+  .row-link{ font-family:'IBM Plex Mono', monospace; font-size: 13.5px; color: var(--accent); }
+  .row-link:hover{ text-decoration: underline; }
+
+  /* ABOUT */
+  .about-text{ font-size: 17px; color: var(--muted); max-width: 600px; }
+  .about-text strong{ color: var(--ink); font-weight: 600; }
+
+  /* CONTACT */
+  .contact-big{ font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; max-width: 600px; margin-bottom: 28px; }
+  .contact-list{ display:flex; flex-direction: column; gap: 10px; font-family:'IBM Plex Mono', monospace; font-size: 15px; }
+  .contact-list a{ display:inline-flex; align-items:center; gap:8px; }
+  .contact-list a::after{ content:"→"; opacity:0; transform: translateX(-4px); transition: all .15s ease; }
+  .contact-list a:hover::after{ opacity:1; transform: translateX(0); }
+  .contact-list a:hover{ color: var(--accent); }
+
+  footer{ padding: 40px 0 60px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color: var(--muted); border-top: 1px solid var(--rule); }
+
+  @media (max-width: 600px){
+    .row{ grid-template-columns: 1fr; gap: 6px; }
+    .row-label{ padding-top:0; }
+  }
+
+  a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="nav-logo">Alex Kim</div>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Data Scientist</div>
+    <h1 class="hero-title">Alex Kim</h1>
+    <div class="hero-keywords">
+      <span>Python</span><span>Machine Learning</span><span>Statistics</span><span>A/B Testing</span>
+    </div>
+    <p class="hero-desc">I build models and pipelines that hold up outside the notebook. Over the past 5 years I've grown alongside early-stage startups, and I like the part where an analysis actually changes what a team decides to do.</p>
+    <div class="hero-links">
+      <a class="link" href="#work">View work</a>
+      <a class="link" href="#contact">Get in touch</a>
+      <a class="link" href="#" target="_blank" rel="noopener">Resume (PDF)</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><h2>About</h2></div>
+    <p class="about-text">I've spent the last <strong>3+ years</strong> designing and running backend systems and infrastructure for web products. I mostly work in <strong>Node.js</strong> and <strong>Go</strong>, and I care about building systems that stay steady under growing traffic. Lately I've also been improving our code review culture and onboarding docs.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head"><h2>Selected work</h2><span class="count">03</span></div>
+
+    <div class="row">
+      <div class="row-label">2025</div>
+      <div class="row-body">
+        <h3>Real-time Order Processing Engine</h3>
+        <p>Event-driven system handling 3,000 orders per second. Rewritten in Go with Kafka, cutting latency by 80%.</p>
+        <div class="row-tags"><span>Go</span><span>Kafka</span><span>PostgreSQL</span></div>
+        <a class="row-link" href="#">View project →</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">2024</div>
+      <div class="row-body">
+        <h3>Internal Auth Gateway</h3>
+        <p>Consolidated authentication logic scattered across services into a single gateway, built on OAuth2 and JWT.</p>
+        <div class="row-tags"><span>TypeScript</span><span>OAuth2</span><span>Redis</span></div>
+        <a class="row-link" href="#">View project →</a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">2023</div>
+      <div class="row-body">
+        <h3>Monitoring Dashboard</h3>
+        <p>A dashboard giving the team a single view of service metrics, built with React and the Grafana API.</p>
+        <div class="row-tags"><span>React</span><span>Grafana</span></div>
+        <a class="row-link" href="#">View project →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head"><h2>Experience</h2><span class="count">03</span></div>
+
+    <div class="row">
+      <div class="row-label">2023 —<br>Present</div>
+      <div class="row-body">
+        <h3>Backend Engineer, Fintech Startup</h3>
+        <p>Own the payments system and settlement pipeline. Led the architecture through 3x team growth.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">2021 —<br>2023</div>
+      <div class="row-body">
+        <h3>Software Engineer, E-commerce Platform</h3>
+        <p>Split the order/inventory system into microservices and automated the deployment pipeline.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="row-label">2020 —<br>2021</div>
+      <div class="row-body">
+        <h3>Junior Developer, Early-stage Startup</h3>
+        <p>First role — built internal admin tools and API servers while learning the ropes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head"><h2>Contact</h2></div>
+    <p class="contact-big">Open to new projects and collaborations — reach out through any of these.</p>
+    <div class="contact-list">
+      <a href="mailto:alex.kim@example.com">alex.kim@example.com</a>
+      <a href="#" target="_blank" rel="noopener">GitHub</a>
+      <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Alex Kim</div>
+</footer>
+
+</body>
+</html>
